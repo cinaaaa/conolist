@@ -1,7 +1,8 @@
-from selector import pick
-from getpathfiles import get_files
+#!/usr/bin/python3
+from src.selector import pick
+from src.getpathfiles import get_files
 from os.path import isfile, join
-from commands import exitcommand, runcommand, gotodir
+from src.commands import exitcommand, runcommand, gotodir
 import os
 
 def menu_initilizer():
@@ -50,3 +51,4 @@ def menu_initilizer():
             # run the command
             runcommand(command)
 
+menu_initilizer()
