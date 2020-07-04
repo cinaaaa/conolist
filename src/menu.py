@@ -20,7 +20,6 @@ def menu_initilizer():
         menu_initilizer()
 
     # User selects a option
-
     if option:
         # its file or folder
         if option and index and option[0] != '@' and option != '..':
