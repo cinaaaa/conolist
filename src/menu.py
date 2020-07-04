@@ -12,8 +12,12 @@ def menu_initilizer():
     # options are the files and folders in cr path
     options = get_files(os.getcwd())
 
-    # Choosed an option now
-    option, index = pick(options, title, indicator="->")
+    try:
+        # Choosed an option now
+        option, index = pick(options, title, indicator="->")
+
+    except:
+        menu_initilizer()
 
     # User selects a option
 
@@ -38,11 +42,10 @@ def menu_initilizer():
             exitcommand()
 
         if option == '@command':
-
-            # Print path
-            print(os.getcwd())
             # clear console
             os.system('cls' if os.name=='nt' else 'clear')
+            # Print path
+            print(os.getcwd())
             # get command from user
             command = str(input('command >> '))
             # run the command
