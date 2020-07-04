@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 from src.menu import menu_initilizer
 import os
 import sys, getopt
