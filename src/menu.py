@@ -1,7 +1,7 @@
-from .selector import pick
-from .getpathfiles import get_files
+from selector import pick
+from getpathfiles import get_files
 from os.path import isfile, join
-from .commands import exitcommand, runcommand, gotodir
+from commands import exitcommand, runcommand, gotodir
 import os
 
 def menu_initilizer():
