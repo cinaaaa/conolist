@@ -147,7 +147,6 @@ class Picker(object):
         while True:
             self.draw()
             c = self.screen.getch()
-            return(c,c)
             if c in KEYS_UP:
                 self.move_up()
             if c == 99:
@@ -190,12 +189,5 @@ class Picker(object):
 
 
 def pick(*args, **kwargs):
-    """Construct and start a :class:`Picker <Picker>`.
-    Usage::
-      >>> from pick import pick
-      >>> title = 'Please choose an option: '
-      >>> options = ['option1', 'option2', 'option3']
-      >>> option, index = pick(options, title)
-    """
     picker = Picker(*args, **kwargs)
     return picker.start()
