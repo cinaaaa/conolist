@@ -24,10 +24,10 @@ def menu_initilizer():
         # its file or folder
         if option and index and option[0] != '@' and option != '..':
             # Get type of selected item
-            if isfile(join(os.getcwd(), option.replace(' ','').replace('$','').replace('X',''))):
+            if isfile(join(os.getcwd(), option.replace(' ','').replace('$',''))):
                 menu_initilizer()
             else:
-                gotodir(join(os.getcwd(), option.replace(' ','').replace('$','').replace('X','')))
+                gotodir(join(os.getcwd(), option.replace(' ','').replace('$','')))
                 menu_initilizer()
 
         # its back command
