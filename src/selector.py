@@ -11,6 +11,8 @@ KEYS_ENTER = (curses.KEY_ENTER, ord('\n'), ord('\r'))
 KEYS_UP = (curses.KEY_UP, ord('k'))
 KEYS_DOWN = (curses.KEY_DOWN, ord('j'))
 KEYS_SELECT = (curses.KEY_RIGHT, ord(' '))
+KEYS_COMMAND = (curses.KEY_COPY, 67)
+
 
 class Picker(object):
     """The :class:`Picker <Picker>` object
@@ -145,8 +147,13 @@ class Picker(object):
         while True:
             self.draw()
             c = self.screen.getch()
+            return(c,c)
             if c in KEYS_UP:
                 self.move_up()
+            if c == 99:
+                return ('@command','@command')
+            if c == 113:
+                return ('@exit','@exit')
             elif c in KEYS_DOWN:
                 self.move_down()
             elif c in KEYS_ENTER:

@@ -1,13 +1,10 @@
 from selector import pick
 from getpathfiles import get_files
+from menu import cono_menu
 import os
 
-def start():
-    title = os.getcwd()
-    options = get_files(os.getcwd())
-    option, index = pick(options, title, indicator=">>")
-    print(index)
-    
+def init():
+    cono_menu()
 
 if __name__ == '__main__':
-    start()
+    init()
