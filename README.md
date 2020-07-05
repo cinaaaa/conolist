@@ -12,14 +12,20 @@
 ```
 pip3 install conolist
 ```
+# How its like
+/home/sina
+    ..
+    $ snap
+    $ .conda
+->  $ .gnome
+    $ .config
+    $ .local
+    $ Downloads
 
 # Usage
 from anywhere in your terminal just run `conolist`
 
-# Example
-[![asciicast](https://asciinema.org/a/345407.svg)](https://asciinema.org/a/345407)
-
-# Keys and features avaiable
+# Keys and features available
 | Key | Purpose|
 | --- | --- |
 | q | quit |
@@ -27,3 +33,6 @@ from anywhere in your terminal just run `conolist`
 | Key up | go up |
 | Key Down  | go down |
 | Enter | go to that path |
+
+# Example
+[![asciicast](https://asciinema.org/a/345407.svg)](https://asciinema.org/a/345407)
