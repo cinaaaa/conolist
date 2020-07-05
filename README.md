@@ -12,15 +12,6 @@
 ```
 pip3 install conolist
 ```
-# How its like
-/home/sina
-    ..
-    $ snap
-    $ .conda
-->  $ .gnome
-    $ .config
-    $ .local
-    $ Downloads
 
 # Usage
 from anywhere in your terminal just run `conolist`
