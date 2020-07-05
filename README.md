@@ -1,2 +1,2 @@
 ## Conolist
-<script id="asciicast-345407" src="https://asciinema.org/a/345407.js" async></script>
+[![asciicast](https://asciinema.org/a/345407.svg)](https://asciinema.org/a/345407)
