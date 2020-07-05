@@ -219,6 +219,28 @@ def runcommand(command):
 
     os.system(command) if command != '' else None
 
+def deletefile(filename):
+
+    os.system(f'rm {os.getcwd()}/{filename}')
+
+def question_menu(title, options, task):
+
+    title = title
+    options = options
+
+    try:
+        # Choosed an option now
+        option, index = pick(options, title, indicator="=>")
+
+    except:
+        menu_initilizer()
+
+    # we have option
+    if option:
+        # index of select option in tasks
+        task[index](title)
+        return menu_initilizer()
+
 
 def menu_initilizer():
     
@@ -241,7 +263,19 @@ def menu_initilizer():
         if option and index and option[0] != '@' and option != '..':
             # Get type of selected item
             if isfile(join(os.getcwd(), option.replace(' ','').replace('$',''))):
-                menu_initilizer()
+                question_menu(
+                    options[index].replace(' ','').replace('$',''),
+                    [
+                        'Delete',
+                        'Move',
+                        'Paste'
+                    ],
+                    [
+                        lambda x: deletefile(x),
+                        deletefile,
+                        deletefile
+                    ]
+                )
             else:
                 gotodir(join(os.getcwd(), option.replace(' ','').replace('$','')))
                 menu_initilizer()
@@ -265,6 +299,7 @@ def menu_initilizer():
             command = str(input('command >> '))
             # run the command
             runcommand(command)
+            # now command runs and we want to ask user to continue proccess
 
 if __name__ == '__main__':
     menu_initilizer()
