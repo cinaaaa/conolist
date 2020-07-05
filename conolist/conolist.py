@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+    Conolist all codes here.
+    i put the all code here to prevent releative imports
+    error in python.
+    @2020 
+    Author Sina Farhadi <E-RROR>
+"""
 from os.path import isfile, join, isdir
 import os
 import platform
