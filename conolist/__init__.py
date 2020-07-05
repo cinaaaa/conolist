@@ -311,7 +311,14 @@ def menu_initilizer():
 
         # its paste
         if 'Paste ' in option:
+
+            # Make copy global
+            global COPY
+            # copy file in current path
             os.system(f'cp -r {COPY} {os.getcwd()}')
+            # Make copy empty
+            COPY = None
+            # Initial Menu again
             menu_initilizer()
 
         if option == '@command':
