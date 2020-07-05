@@ -10,6 +10,7 @@ from os.path import isfile, join, isdir
 import os
 import platform
 from os import listdir
+import subprocess
 import curses
 
 KEYS_ENTER = (curses.KEY_ENTER, ord('\n'), ord('\r'))
@@ -18,6 +19,7 @@ KEYS_DOWN = (curses.KEY_DOWN, ord('j'))
 KEYS_SELECT = (curses.KEY_RIGHT, ord(' '))
 KEYS_COMMAND = (curses.KEY_COPY, 67)
 
+COPY = None
 
 class Picker(object):
     """The :class:`Picker <Picker>` object
@@ -205,7 +207,11 @@ def get_files(dir):
     # get folders in directory
     folders = [f'$ {f}' for f in listdir(dir) if isdir(join(dir, f))]
 
-    return ['..'] + folders + files
+    if COPY:
+        filename = COPY.split('/')[len(COPY.split('/')) - 1]
+        return [f'Paste {filename} here'] + ['..'] + folders + files
+    else:
+        return ['..'] + folders + files
 
 def gotodir(path):
 
@@ -217,7 +223,17 @@ def exitcommand():
 
 def runcommand(command):
 
-    os.system(command) if command != '' else None
+    if command != '':
+        output = subprocess.check_output(command.split())
+        return output.decode("utf-8")
+
+def getcopy(pathname):
+
+    global COPY
+
+    COPY = pathname
+    menu_initilizer()
+
 
 def deletefile(filename):
 
@@ -239,7 +255,8 @@ def question_menu(title, options, task):
     if option:
         # index of select option in tasks
         task[index]()
-        return menu_initilizer()
+        
+    return menu_initilizer()
 
 
 def menu_initilizer():
@@ -260,20 +277,22 @@ def menu_initilizer():
     # User selects a option
     if option:
         # its file or folder
-        if option and index and option[0] != '@' and option != '..':
+        if option and index and option[0] != '@' and option != '..' and 'Paste ' not in option:
             # Get type of selected item
             if isfile(join(os.getcwd(), option.replace(' ','').replace('$',''))):
                 question_menu(
                     options[index].replace(' ','').replace('$',''),
                     [
                         'Delete',
-                        'Move',
-                        'Cancel'
+                        'Copy',
+                        'Rename',
+                        'Go back'
                     ],
                     [
-                        lambda x: deletefile(options[index].replace(' ','').replace('$','')),
-                        deletefile,
-                        menu_initilizer
+                        lambda: deletefile(options[index].replace(' ','').replace('$','')),
+                        lambda: getcopy(os.getcwd()+'/'+options[index].replace(' ','').replace('$','')),
+                        menu_initilizer,
+                        menu_initilizer,
                     ]
                 )
             else:
@@ -290,6 +309,11 @@ def menu_initilizer():
         if option == '@exit':
             exitcommand()
 
+        # its paste
+        if 'Paste ' in option:
+            os.system(f'cp -r {COPY} {os.getcwd()}')
+            menu_initilizer()
+
         if option == '@command':
             # clear console
             os.system('cls' if os.name=='nt' else 'clear')
@@ -298,8 +322,20 @@ def menu_initilizer():
             # get command from user
             command = str(input('command >> '))
             # run the command
-            runcommand(command)
+            output = runcommand(command)
             # now command runs and we want to ask user to continue proccess
+            question_menu(
+                f'{output} \r\n Do want to continue?',
+                [
+                    'Yes',
+                    'No, exit',
+                ],
+                [
+                    menu_initilizer,
+                    exit
+                ]
+            )
+
 
 if __name__ == '__main__':
     menu_initilizer()
