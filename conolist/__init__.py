@@ -238,7 +238,7 @@ def question_menu(title, options, task):
     # we have option
     if option:
         # index of select option in tasks
-        task[index](title)
+        task[index]()
         return menu_initilizer()
 
 
@@ -268,12 +268,12 @@ def menu_initilizer():
                     [
                         'Delete',
                         'Move',
-                        'Paste'
+                        'Cancel'
                     ],
                     [
-                        lambda x: deletefile(x),
+                        lambda x: deletefile(options[index].replace(' ','').replace('$','')),
                         deletefile,
-                        deletefile
+                        menu_initilizer
                     ]
                 )
             else:
