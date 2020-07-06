@@ -160,6 +160,8 @@ class Picker(object):
                 return ('@command','@command')
             if c == 113:
                 return ('@exit','@exit')
+            if c == 105:
+                return ('@folderoption', self.get_selected())
             elif c in KEYS_DOWN:
                 self.move_down()
             elif c in KEYS_ENTER:
@@ -245,7 +247,7 @@ def getrename(current_name):
 
 def deletefile(filename):
 
-    os.system(f'rm {os.getcwd()}/{filename}')
+    os.system(f'rm -rf {os.getcwd()}/{filename}')
 
 def question_menu(title, options, task):
 
@@ -347,9 +349,33 @@ def menu_initilizer():
                 ],
                 [
                     menu_initilizer,
-                    exit
+                    exit,
                 ]
             )
+
+        # its option on folder
+        if option == '@folderoption':
+            
+            # check select item is folder
+            if not isfile(join(os.getcwd(), option.replace(' ','').replace('$',''))):
+                folder_name = index[0].replace(' ','').replace('$','')
+                question_menu(
+                    f'What to do with {folder_name} ?',
+                    [
+                        'Delete Folder',
+                        'Copy',
+                        'Nothing, exit',
+                    ],
+                    [
+                        lambda: deletefile(folder_name),
+                        lambda: getcopy(os.getcwd() + '/' + folder_name.replace(' ','').replace('$','')),
+                        menu_initilizer,
+                    ]
+                )
+
+            # not a folder initial menu again
+            else:
+                menu_initilizer()
 
 
 if __name__ == '__main__':
