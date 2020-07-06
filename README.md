@@ -21,9 +21,11 @@ from anywhere in your terminal just run `conolist`
 | --- | --- |
 | q | quit |
 | c  | enter command |
+| i  | option menu on folders |
 | Key up | go up |
 | Key Down  | go down |
-| Enter | go to that path |
+| Enter on folder | go to that path |
+| Enter on file | option menu for file |
 
 # Example
 [![asciicast](https://asciinema.org/a/345407.svg)](https://asciinema.org/a/345407)
