@@ -235,9 +235,10 @@ def getcopy(pathname):
     menu_initilizer()
 
 def getrename(current_name):
-
+    # clear console
+    os.system('cls' if os.name=='nt' else 'clear')
     # get name of new name
-    target_name = str(input('Rename to >> '))
+    target_name = str(input(f'Rename {current_name} to >> '))
     # do rename
     os.system(f'mv {current_name} {target_name}')
     menu_initilizer()
