@@ -28,4 +28,4 @@ from anywhere in your terminal just run `conolist`
 | Enter on file | option menu for file |
 
 # Example
-[![asciicast](https://asciinema.org/a/JbJgf8sE3X7PwtYRsrtnvc1LK.svg)](https://asciinema.org/a/JbJgf8sE3X7PwtYRsrtnvc1LK)
+[![asciicast](https://asciinema.org/a/345593.svg)](https://asciinema.org/a/345593)
