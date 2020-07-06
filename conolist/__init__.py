@@ -357,7 +357,7 @@ def menu_initilizer():
         if option == '@folderoption':
             
             # check select item is folder
-            if isdir(join(os.getcwd(), option.replace(' ','').replace('$',''))):
+            if isdir(join(os.getcwd(), index[0].replace(' ','').replace('$','').replace(' ','').replace('$',''))):
                 folder_name = index[0].replace(' ','').replace('$','')
                 question_menu(
                     f'What to do with {folder_name} ?',
