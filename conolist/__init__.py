@@ -234,6 +234,13 @@ def getcopy(pathname):
     COPY = pathname
     menu_initilizer()
 
+def getrename(current_name):
+
+    # get name of new name
+    target_name = str(input('Rename to >> '))
+    # do rename
+    os.system(f'mv {current_name} {target_name}')
+    menu_initilizer()
 
 def deletefile(filename):
 
@@ -291,7 +298,7 @@ def menu_initilizer():
                     [
                         lambda: deletefile(options[index].replace(' ','').replace('$','')),
                         lambda: getcopy(os.getcwd()+'/'+options[index].replace(' ','').replace('$','')),
-                        menu_initilizer,
+                        lambda: getrename(options[index].replace(' ','').replace('$','')),
                         menu_initilizer,
                     ]
                 )
