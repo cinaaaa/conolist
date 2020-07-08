@@ -6,6 +6,7 @@
 <p align="center">
   <img src="https://img.shields.io/pypi/v/conolist"/>
   <img src="https://img.shields.io/github/issues/E-RROR/conolist"/>
+  <img src="https://img.shields.io/pypi/l/conolist" />
 </p>
 
 # Installation
