@@ -347,7 +347,7 @@ def menu_initilizer():
                 f'{output} \r\n Do want to continue?',
                 [
                     'Yes',
-                    'No, exit',
+                    'Exit',
                 ],
                 [
                     menu_initilizer,
@@ -366,7 +366,7 @@ def menu_initilizer():
                     [
                         'Delete Folder',
                         'Copy',
-                        'Nothing, exit',
+                        'Exit',
                     ],
                     [
                         lambda: deletefile(folder_name),
