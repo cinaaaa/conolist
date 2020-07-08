@@ -217,7 +217,7 @@ def get_files(dir):
 
 def gotodir(path):
 
-    return os.chdir(path) if path != '' else None
+    return os.system(f'cd {path}') if path != '' else None
 
 def exitcommand():
 
