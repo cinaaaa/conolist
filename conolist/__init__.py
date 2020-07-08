@@ -217,7 +217,9 @@ def get_files(dir):
 
 def gotodir(path):
 
-    return os.system(f'cd {path}') if path != '' else None
+    splitted_path = path.replace(' ','').replace('$','')
+    print(splitted_path)
+    os.system(f'cd {splitted_path}') if path != '' else None
 
 def exitcommand():
 
