@@ -30,6 +30,3 @@ from anywhere in your terminal just run `conolist`
 | Key Down  | go down |
 | Enter on folder | go to that path |
 | Enter on file | option menu for file |
-
-# Example
-[![asciicast](https://asciinema.org/a/345593.svg)](https://asciinema.org/a/345593)
