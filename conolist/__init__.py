@@ -218,8 +218,7 @@ def get_files(dir):
 def gotodir(path):
 
     splitted_path = path.replace(' ','').replace('$','')
-    print(splitted_path)
-    os.system(f'cd {splitted_path}') if path != '' else None
+    os.chdir(splitted_path) if path != '' else None
 
 def exitcommand():
 
@@ -228,8 +227,15 @@ def exitcommand():
 def runcommand(command):
 
     if command != '':
-        output = subprocess.check_output(command.split())
-        return output.decode("utf-8")
+        os.system(f'GREPDB="{command}"; /bin/bash -c "$GREPDB"')
+        get_question = str(input('Do you want to continue? [y,n] >>> '))
+        
+        if get_question == 'y':
+            menu_initilizer()
+        if get_question == 'n':
+            exit()
+        else:
+            menu_initilizer()
 
 def getcopy(pathname):
 
@@ -341,19 +347,7 @@ def menu_initilizer():
             # get command from user
             command = str(input('command >> '))
             # run the command
-            output = runcommand(command)
-            # now command runs and we want to ask user to continue proccess
-            question_menu(
-                f'{output} \r\n Do want to continue?',
-                [
-                    'Yes',
-                    'Exit',
-                ],
-                [
-                    menu_initilizer,
-                    exit,
-                ]
-            )
+            runcommand(command)
 
         # its option on folder
         if option == '@folderoption':
