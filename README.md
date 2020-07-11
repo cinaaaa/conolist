@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/pypi/l/conolist" />
 </p>
 <div align="center">
-  <img src="https://im4.ezgif.com/tmp/ezgif-4-12238fb65d7d.gif" />
+  <img src="https://github.com/E-RROR/protovpn/raw/master/ezgif.com-crop.gif" />
 </div>
 
 # Installation
