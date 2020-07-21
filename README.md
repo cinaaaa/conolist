@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://launchpadlibrarian.net/488250556/rsz_2list.png" />  
+<img src="https://launchpadlibrarian.net/488250556/rsz_2list.png" width="200" />  
 </p>
 <h1 align="center">CONO LIST</h1>
 <h3 align="center">Surf paths easily from console</h3>
@@ -17,7 +17,7 @@
 pip3 install conolist
 ```
 
-# Usage
+# Running
 from anywhere in your terminal just run `conolist`
 
 # Keys and features available
