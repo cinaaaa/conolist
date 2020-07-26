@@ -158,6 +158,8 @@ class Picker(object):
                 self.move_up()
             if c == 99:
                 return ('@command','@command')
+            if c == 115:
+                return ('@search','@search')
             if c == 113:
                 return ('@exit','@exit')
             if c == 105:
@@ -329,13 +331,17 @@ def menu_initilizer():
 
         # its paste
         if 'Paste ' in option:
-
             # Make copy global
             global COPY
             # copy file in current path
             os.system(f'cp -r {COPY} {os.getcwd()}')
             # Make copy empty
             COPY = None
+            # Initial Menu again
+            menu_initilizer()
+        
+        # its search on folders
+        if 'search' in option:
             # Initial Menu again
             menu_initilizer()
 
@@ -351,7 +357,6 @@ def menu_initilizer():
 
         # its option on folder
         if option == '@folderoption':
-            
             # check select item is folder
             if isdir(join(os.getcwd(), index[0].replace(' ','').replace('$','').replace(' ','').replace('$',''))):
                 folder_name = index[0].replace(' ','').replace('$','')
@@ -360,11 +365,13 @@ def menu_initilizer():
                     [
                         'Delete Folder',
                         'Copy',
+                        'Rename',
                         'Exit',
                     ],
                     [
                         lambda: deletefile(folder_name),
                         lambda: getcopy(os.getcwd() + '/' + folder_name.replace(' ','').replace('$','')),
+                        lambda: getrename(folder_name),
                         menu_initilizer,
                     ]
                 )
