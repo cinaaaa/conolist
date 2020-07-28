@@ -262,12 +262,16 @@ def deletefile(filename):
     os.system(f'rm -rf {os.getcwd()}/{filename}')
 
 def createfile():
+    # clear console
+    os.system('cls' if os.name=='nt' else 'clear')
     # get name of new file
     target_name = str(input('Name of new file (with extention) >> '))
     # create file
     os.system(f'touch {target_name}')
 
 def createfolder():
+    # clear console
+    os.system('cls' if os.name=='nt' else 'clear')
     # get name of new folder
     target_name = str(input('Name of new folder >> '))
     # create folder
