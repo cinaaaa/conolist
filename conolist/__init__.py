@@ -164,6 +164,8 @@ class Picker(object):
                 return ('@exit','@exit')
             if c == 105:
                 return ('@folderoption', self.get_selected())
+            if c == 110:
+                return ('@newone', '@newone')
             elif c in KEYS_DOWN:
                 self.move_down()
             elif c in KEYS_ENTER:
@@ -258,6 +260,18 @@ def getrename(current_name):
 def deletefile(filename):
 
     os.system(f'rm -rf {os.getcwd()}/{filename}')
+
+def createfile():
+    # get name of new file
+    target_name = str(input('Name of new file (with extention) >> '))
+    # create file
+    os.system(f'touch {target_name}')
+
+def createfolder():
+    # get name of new folder
+    target_name = str(input('Name of new folder >> '))
+    # create folder
+    os.system(f'mkdir {target_name}')
 
 def question_menu(title, options, task):
 
@@ -379,6 +393,23 @@ def menu_initilizer():
             # not a folder initial menu again
             else:
                 menu_initilizer()
+        
+        if option == '@newone':
+            question_menu(
+            f'Select an option ?',
+                [
+                    'Create File',
+                    'Create Folder',
+                    'Exit',
+                ],
+                [
+                    lambda: createfile(),
+                    lambda: createfolder(),
+                    menu_initilizer,
+                ]
+            )
+            # run the command
+            runcommand(command)
 
 
 if __name__ == '__main__':
