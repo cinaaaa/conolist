@@ -26,6 +26,7 @@ from anywhere in your terminal just run `conolist`
 | q | quit |
 | c  | enter command |
 | i  | option menu on folders |
+| n  | create new file or folder |
 | Key up | go up |
 | Key Down  | go down |
 | Enter on folder | go to that path |
